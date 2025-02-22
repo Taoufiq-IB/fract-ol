@@ -28,18 +28,18 @@ typedef struct s_fractol
 
 void	ft_putstr_fd(char *s, int fd);
 int	    ft_strcmp(const char *str1, const char *str2);
-double	ft_atof(char *s);
+double	ft_atod(char *s);
 void	mandelbrot(t_fractol *fractol);
 void	julia(t_fractol *fractol, double j_x, double j_y);
 double	scale(int pixel, double max, double min, int size);
 void    put_pixel(t_fractol *fractol, int x, int y, int color);
 int     coloring(int i, int max);
 void    draw_fractol(t_fractol *fractol, char *name);
+void	hooks_handle(t_fractol *fractol);
+void    destroy(t_fractol *fractol);
+int     esc(int keycode, t_fractol *fractol);
+int     close_b(t_fractol *fractol);
+void    close_mlx(t_fractol *fractol);
 
-void    init_fractol(t_fractol *fractol, char *type);
-void    render_fractal(t_fractol *fractol);
-int     handle_key(int key, t_fractol *fractol);
-int     handle_mouse(int button, int x, int y, t_fractol *fractol);
-void    put_pixel(t_fractol *fractol, int x, int y, int color);
 
 #endif

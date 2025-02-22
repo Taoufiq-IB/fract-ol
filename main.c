@@ -73,11 +73,11 @@ static void    argument_parsing(int argc, char **argv, t_fractol *fractol)
             && isvalid_num(argv[2]) == 0 && isvalid_num(argv[3] == 0))
     {
         fractol->name = argv[1];
-        if (ft_atof(argv[2]) <= 2 || ft_atof(argv[2]) >= -2 || ft_atof(argv[3]) <= 2
-            || ft_atof(argv[3]) >= -2)
+        if (ft_atod(argv[2]) <= 2 || ft_atod(argv[2]) >= -2 || ft_atod(argv[3]) <= 2
+            || ft_atod(argv[3]) >= -2)
         {
-            fractol->x = ft_atof(argv[2]);
-            fractol->y = ft_atof(argv[3]);
+            fractol->x = ft_atod(argv[2]);
+            fractol->y = ft_atod(argv[3]);
         }
         else
             (ft_putstr_fd("invalid coords\n", 2), exit(1));

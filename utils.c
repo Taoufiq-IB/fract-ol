@@ -60,7 +60,7 @@ static	double	fractional_part(char *s)
 	return (res);
 }
 
-double	ft_atof(char *s)
+double	ft_atod(char *s)
 {
 	int		int_part;
 	double	frac_part;

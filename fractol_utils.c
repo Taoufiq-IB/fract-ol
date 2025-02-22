@@ -30,12 +30,7 @@ int	coloring(int i, int max)
 	return (r << 16 | g << 8 | b);
 }
 
-void	hooks_handle(t_fractol *fractol)
-{
-	mlx_mouse_hook(fractol->win, mouse_wheel, fractol);
-}
-
-int	mouse_wheel(int button, int x, int y, t_fractol *fractol)
+static int	mouse_wheel(int button, int x, int y, t_fractol *fractol)
 {
 	(void)x;
 	(void)y;
@@ -52,3 +47,9 @@ int	mouse_wheel(int button, int x, int y, t_fractol *fractol)
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	return (0);
 }
+
+void	hooks_handle(t_fractol *fractol)
+{
+	mlx_mouse_hook(fractol->win, mouse_wheel, fractol);
+}
+
