@@ -1,22 +1,29 @@
-NAME = fractol
-
-SRC = src/main.c src/mandelbrot.c src/events.c src/utils.c
-OBJ = $(SRC:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Wextra -Werror
+SRCS = fractol.c \
+		fractol_utils.c \
+		utils.c \
+		mlx_destroy.c \
+		main.c
 
-all: $(NAME)
+OBJECTS = $(SRCS:.c=.o)
+OBJECTS_BON = $(BON:.c=.o)
+NAME = fractol
+HEADER = fractol.h
 
-$(NAME): $(OBJ)
-    $(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
+all : $(NAME)
+
+bonus : $(NAME_BON)
+
+$(NAME): $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) -Lmlx_linux -lmlx_Linux -L/home/ihamani/.local/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+%.o: %.c $(HEADER)
+	$(CC) $(FLAGS) -I/home/ihamani/.local/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
-    rm -f $(OBJ)
-
+	rm -rf $(OBJECTS)
 fclean: clean
-    rm -f $(NAME)
+	rm -rf $(NAME) $(NAME_BON)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re: fclean  all
