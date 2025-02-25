@@ -40,9 +40,9 @@ static int	mouse_wheel(int button, int x, int y, t_fractol *fractol)
 		fractol->zoom *= 0.9;
 	else
 		return (0);
-	if (fractol->name == "mandelbrot")
+	if (ft_strcmp(fractol->name, "mandelbrot") == 0)
 		draw_fractol(fractol, "mandelbrot");
-	else if (fractol->name == "julia")
+	else if (ft_strcmp(fractol->name, "julia") == 0)
 		draw_fractol(fractol, "julia");
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	return (0);

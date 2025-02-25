@@ -3,6 +3,8 @@
 
 #include <mlx.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -37,6 +39,7 @@ int     coloring(int i, int max);
 void    draw_fractol(t_fractol *fractol, char *name);
 void	hooks_handle(t_fractol *fractol);
 void    destroy(t_fractol *fractol);
+void	handle_sigint(int sig);
 int     esc(int keycode, t_fractol *fractol);
 int     close_b(t_fractol *fractol);
 void    close_mlx(t_fractol *fractol);
