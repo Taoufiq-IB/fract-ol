@@ -45,18 +45,24 @@ static int isvalid_num(char *s)
 
     i = 0;
     point = 0;
+    if (!s || s[0] == '\0')
+        return (1);
     if (s[i] == '+' || s[i] == '-')
         i++;
+    if (s[i] == '\0' || s[i] == '.')
+        return (1);
     while (s[i])
     {
-        if (s[i] != '.' && (s[i] < '0' || s[i] > '9'))
-            return (1);
         if (s[i] == '.')
+        {
+            if (point == 1 || s[i + 1] == '\0')
+                return (1);
             point++;
+        }
+        else if (s[i] < '0' || s[i] > '9')
+            return (1);
         i++;
     }
-    if (point > 1)
-        return (1);
     return (0);
 }
 

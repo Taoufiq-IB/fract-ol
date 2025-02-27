@@ -12,8 +12,8 @@ int	iterating_man(double real, double imag)
 	i = 0;
 	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
 	{
-        tmp = (new_real * new_real) - (new_imag * new_imag) + real;
-		new_imag = 2 * new_real * new_imag + imag;
+        tmp = (new_real * new_real) - (new_imag * new_imag) + real; //z*z + c <real>
+		new_imag = 2 * new_real * new_imag + imag; //z*z + c <img>
 		new_real = tmp;
 		i++;
 	}

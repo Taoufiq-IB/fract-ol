@@ -10,7 +10,8 @@ void put_pixel(t_fractol *fractol, int x, int y, int color)
 {
     char *dst;
 
-    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) {
+    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) 
+	{
         dst = fractol->addr + (y * fractol->line_length + x * (fractol->bits_per_pixel / 8));
         *(unsigned int *)dst = color;
     }
