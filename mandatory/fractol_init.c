@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   fractol_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 18:13:41 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:38:54 by tibarike         ###   ########.fr       */
+/*   Created: 2025/02/28 10:09:48 by tibarike          #+#    #+#             */
+/*   Updated: 2025/02/28 10:10:22 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "fractol.h"
 
-static int	window_init(t_fractol *fractol)
+int	window_init(t_fractol *fractol)
 {
 	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, fractol->name);
 	if (!fractol->win)
@@ -26,42 +26,10 @@ static int	window_init(t_fractol *fractol)
 	if (!fractol->addr)
 		return (destroy(fractol), 1);
 	fractol->zoom = 1;
-	fractol->offset_x = 0;
-	fractol->offset_y = 0;
-	fractol->r = 5;
-	fractol->g = 3;
-	fractol->b = 7;
-	burning_ship(fractol);
+	draw_fractol(fractol, fractol->name);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	hooks_handle(fractol);
-	mlx_keys(fractol);
 	close_mlx(fractol);
 	mlx_loop(fractol->mlx);
-	return (0);
-}
-
-static void	usage_error(void)
-{
-	ft_putstr_fd("Usage:\n./fractol mandelbrot\n", 2);
-	ft_putstr_fd("./fractol ./julia <real> <img>\n", 2);
-	exit(1);
-}
-
-int	main(int ac, char **av)
-{
-	t_fractol	fractol;
-
-	if (ac <= 1)
-		usage_error();
-	else if (ac == 2 && ft_strcmp(av[1], "burning ship") == 0)
-		fractol.name = av[1];
-	else
-		usage_error();
-	fractol.mlx = mlx_init();
-	if (window_init(&fractol) != 0)
-	{
-		ft_putstr_fd("something is off\n", 2);
-		exit(1);
-	}
 	return (0);
 }

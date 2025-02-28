@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/28 10:13:08 by tibarike          #+#    #+#             */
+/*   Updated: 2025/02/28 10:16:17 by tibarike         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	iterating_man(double real, double imag)
@@ -12,8 +24,8 @@ int	iterating_man(double real, double imag)
 	i = 0;
 	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
 	{
-        tmp = (new_real * new_real) - (new_imag * new_imag) + real; //z*z + c <real>
-		new_imag = 2 * new_real * new_imag + imag; //z*z + c <img>
+		tmp = (new_real * new_real) - (new_imag * new_imag) + real;
+		new_imag = 2 * new_real * new_imag + imag;
 		new_real = tmp;
 		i++;
 	}
@@ -22,22 +34,22 @@ int	iterating_man(double real, double imag)
 
 int	iterating_julia(double real, double imag, double r, double im)
 {
-    int		i;
-    double	new_real;
-    double	new_imag;
-    double	tmp;
+	int		i;
+	double	new_real;
+	double	new_imag;
+	double	tmp;
 
-    new_real = real;
-    new_imag = imag;
-    i = 0;
-    while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
-    {
-        tmp = (new_real * new_real) - (new_imag * new_imag) + r;
-        new_imag = 2 * new_real * new_imag + im;
-        new_real = tmp;
-        i++;
-    }
-    return (i);
+	new_real = real;
+	new_imag = imag;
+	i = 0;
+	while (((new_real * new_real) + (new_imag * new_imag) < 4) && i < 100)
+	{
+		tmp = (new_real * new_real) - (new_imag * new_imag) + r;
+		new_imag = 2 * new_real * new_imag + im;
+		new_real = tmp;
+		i++;
+	}
+	return (i);
 }
 
 void	mandelbrot(t_fractol *fractol)
@@ -75,7 +87,7 @@ void	julia(t_fractol *fractol, double j_x, double j_y)
 	y = 0;
 	while (y < HEIGHT)
 	{
-        x = 0;
+		x = 0;
 		while (x < WIDTH)
 		{
 			real = scale(x, -2.0, 2.0, WIDTH) * fractol->zoom;

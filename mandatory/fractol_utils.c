@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/28 10:17:53 by tibarike          #+#    #+#             */
+/*   Updated: 2025/02/28 10:20:13 by tibarike         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fractol.h"
 
@@ -6,15 +17,16 @@ double	scale(int pixel, double max, double min, int size)
 	return (min + (((max - min) * pixel) / size));
 }
 
-void put_pixel(t_fractol *fractol, int x, int y, int color) 
+void	put_pixel(t_fractol *fractol, int x, int y, int color)
 {
-    char *dst;
+	char	*dst;
 
-    if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT) 
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
-        dst = fractol->addr + (y * fractol->line_length + x * (fractol->bits_per_pixel / 8));
-        *(unsigned int *)dst = color;
-    }
+		dst = fractol->addr + (y * fractol->line_length + x
+				* (fractol->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 int	coloring(int i, int max)
@@ -53,4 +65,3 @@ void	hooks_handle(t_fractol *fractol)
 {
 	mlx_mouse_hook(fractol->win, mouse_wheel, fractol);
 }
-
