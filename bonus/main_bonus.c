@@ -12,6 +12,16 @@
 
 #include "fractol_bonus.h"
 
+void	draw_fractol(t_fractol *fractol, char *name)
+{
+	if (ft_strcmp(name, "mandelbrot") == 0)
+		mandelbrot(fractol);
+	else if (ft_strcmp(name, "julia") == 0)
+		julia(fractol, fractol->x, fractol->y);
+	else
+		burning_ship(fractol);
+}
+
 static int	window_init(t_fractol *fractol)
 {
 	fractol->win = mlx_new_window(fractol->mlx, WIDTH, HEIGHT, fractol->name);
@@ -31,7 +41,7 @@ static int	window_init(t_fractol *fractol)
 	fractol->r = 5;
 	fractol->g = 3;
 	fractol->b = 7;
-	burning_ship(fractol);
+	draw_fractol(fractol, fractol->name);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	hooks_handle(fractol);
 	mlx_keys(fractol);

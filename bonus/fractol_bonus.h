@@ -44,6 +44,9 @@ typedef struct s_fractol
 
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strcmp(const char *str1, const char *str2);
+void	draw_fractol(t_fractol *fractol, char *name);
+void	mandelbrot(t_fractol *fractol);
+void	julia(t_fractol *fractol, double j_x, double j_y);
 void	burning_ship(t_fractol *fractol);
 double	scale(int pixel, double max, double min, int size);
 void	put_pixel(t_fractol *fractol, int x, int y, int color);

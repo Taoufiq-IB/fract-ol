@@ -7,6 +7,7 @@ SRCS = ./mandatory/fractol.c \
 		./mandatory/main.c
 
 BSRCS = ./bonus/burning_ship_bonus.c \
+		./bonus/fractol_bonus.c \
 		./bonus/fractol_utils_bonus.c \
 		./bonus/fractol_utils2_bonus.c \
 		./bonus/utils_bonus.c \

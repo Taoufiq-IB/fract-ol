@@ -45,7 +45,7 @@ int	handle_key(int keycode, t_fractol *frac)
 		color_shifting(frac, 1);
 	else if (keycode == 45)
 		color_shifting(frac, -1);
-	burning_ship(frac);
+	draw_fractol(fractol, fractol->name);
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->img, 0, 0);
 	return (0);
 }

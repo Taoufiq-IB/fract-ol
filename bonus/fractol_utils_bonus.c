@@ -53,7 +53,7 @@ static int	mouse_wheel(int button, int x, int y, t_fractol *fractol)
 		zoom_at_mouse(fractol, x, y, 0.95);
 	else
 		return (0);
-	burning_ship(fractol);
+	draw_fractol(fractol, fractol->name);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	return (0);
 }
