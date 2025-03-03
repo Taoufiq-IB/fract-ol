@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:48:50 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:51:04 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 18:12:42 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ typedef struct s_fractol
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		color_shift;
 	char	*addr;
 }				t_fractol;
 
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strcmp(const char *str1, const char *str2);
+double	ft_atod(char *s);
+int		isvalid_num(char *s);
+int		window_init(t_fractol *fractol);
 void	draw_fractol(t_fractol *fractol, char *name);
 void	mandelbrot(t_fractol *fractol);
 void	julia(t_fractol *fractol, double j_x, double j_y);
@@ -55,8 +57,6 @@ void	hooks_handle(t_fractol *fractol);
 void	zoom_at_mouse(t_fractol *fractol, int x, int y, double zoom_factor);
 void	mlx_keys(t_fractol *fractol);
 void	destroy(t_fractol *fractol);
-int		esc(int keycode, t_fractol *fractol);
-int		close_b(t_fractol *fractol);
 void	close_mlx(t_fractol *fractol);
 
 #endif

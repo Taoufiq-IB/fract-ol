@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:13:28 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:27:08 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:41:01 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	destroy(t_fractol *fractol)
 	free(fractol->mlx);
 }
 
-int	esc(int keycode, t_fractol *fractol)
+static int	esc(int keycode, t_fractol *fractol)
 {
 	if (keycode == 65307)
 	{
@@ -30,7 +30,7 @@ int	esc(int keycode, t_fractol *fractol)
 	return (0);
 }
 
-int	close_b(t_fractol *fractol)
+static int	close_b(t_fractol *fractol)
 {
 	destroy(fractol);
 	exit(0);

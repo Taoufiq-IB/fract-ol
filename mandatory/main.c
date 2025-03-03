@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 09:55:34 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:12:44 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:06:37 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,6 @@ static void	usage_error(void)
 	exit(1);
 }
 
-static int	isvalid_num(char *s)
-{
-	int	i;
-	int	point;
-
-	i = 0;
-	point = 0;
-	if (!s || s[0] == '\0')
-		return (1);
-	if (s[i] == '+' || s[i] == '-')
-		i++;
-	if (s[i] == '\0' || s[i] == '.')
-		return (1);
-	while (s[i])
-	{
-		if (s[i] == '.')
-		{
-			if (point == 1 || s[i + 1] == '\0')
-				return (1);
-			point++;
-		}
-		else if (s[i] < '0' || s[i] > '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 static void	argument_parsing(int argc, char **argv, t_fractol *fractol)
 {
 	if (argc <= 1)
@@ -68,14 +40,8 @@ static void	argument_parsing(int argc, char **argv, t_fractol *fractol)
 		&& isvalid_num(argv[2]) == 0 && isvalid_num(argv[3]) == 0)
 	{
 		fractol->name = argv[1];
-		if (ft_atod(argv[2]) <= 2 || ft_atod(argv[2]) >= -2
-			|| ft_atod(argv[3]) <= 2 || ft_atod(argv[3]) >= -2)
-		{
-			fractol->x = ft_atod(argv[2]);
-			fractol->y = ft_atod(argv[3]);
-		}
-		else
-			(ft_putstr_fd("invalid coords\n", 2), exit(1));
+		fractol->x = ft_atod(argv[2]);
+		fractol->y = ft_atod(argv[3]);
 	}
 	else
 		usage_error();

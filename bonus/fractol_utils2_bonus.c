@@ -6,13 +6,13 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:39:47 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:44:14 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:13:04 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol_bonus.h"
 
-void	color_shifting(t_fractol *frac, int i)
+static void	color_shifting(t_fractol *frac, int i)
 {
 	frac->r += i;
 	frac->g += i;
@@ -31,7 +31,7 @@ void	zoom_at_mouse(t_fractol *frac, int x, int y, double zoom_factor)
 	frac->offset_y = mouse_imag - (scale(y, 2.0, -2.0, HEIGHT)) * frac->zoom;
 }
 
-int	handle_key(int keycode, t_fractol *frac)
+static int	handle_key(int keycode, t_fractol *frac)
 {
 	if (keycode == 65362)
 		frac->offset_y -= 0.5 * frac->zoom;
@@ -45,7 +45,7 @@ int	handle_key(int keycode, t_fractol *frac)
 		color_shifting(frac, 1);
 	else if (keycode == 45)
 		color_shifting(frac, -1);
-	draw_fractol(fractol, fractol->name);
+	draw_fractol(frac, frac->name);
 	mlx_put_image_to_window(frac->mlx, frac->win, frac->img, 0, 0);
 	return (0);
 }

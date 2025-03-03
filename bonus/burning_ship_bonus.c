@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 11:37:07 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:48:27 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 15:27:34 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	iterating_bs(double real, double image)
 	return (i);
 }
 
-void	burning_ship(t_fractol *farc)
+void	burning_ship(t_fractol *frac)
 {
 	int		x;
 	int		y;
@@ -46,10 +46,10 @@ void	burning_ship(t_fractol *farc)
 		x = 0;
 		while (x < WIDTH)
 		{
-			real = scale(x, 2.0, -2.0, WIDTH) * farc->zoom + farc->offset_x;
-			image = scale(y, 2.0, -2.0, HEIGHT) * farc->zoom + farc->offset_y;
-			color = coloring (iterating_bs(real, image), 100, farc);
-			put_pixel(farc, x, y, color);
+			real = scale(x, 2.0, -2.0, WIDTH) * frac->zoom + frac->offset_x;
+			image = scale(y, 2.0, -2.0, HEIGHT) * frac->zoom + frac->offset_y;
+			color = coloring (iterating_bs(real, image), 100, frac);
+			put_pixel(frac, x, y, color);
 			x++;
 		}
 		y++;

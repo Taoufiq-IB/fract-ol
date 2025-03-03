@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:21:29 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:24:04 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 17:06:18 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_fractol
 int		window_init(t_fractol *fractol);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strcmp(const char *str1, const char *str2);
+int		isvalid_num(char *s);
 double	ft_atod(char *s);
 void	mandelbrot(t_fractol *fractol);
 void	julia(t_fractol *fractol, double j_x, double j_y);
@@ -49,8 +50,6 @@ int		coloring(int i, int max);
 void	draw_fractol(t_fractol *fractol, char *name);
 void	hooks_handle(t_fractol *fractol);
 void	destroy(t_fractol *fractol);
-int		esc(int keycode, t_fractol *fractol);
-int		close_b(t_fractol *fractol);
 void	close_mlx(t_fractol *fractol);
 
 #endif

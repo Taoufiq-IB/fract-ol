@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_init.c                                     :+:      :+:    :+:   */
+/*   fractol_init_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 10:09:48 by tibarike          #+#    #+#             */
-/*   Updated: 2025/03/01 17:05:54 by tibarike         ###   ########.fr       */
+/*   Created: 2025/03/01 15:36:51 by tibarike          #+#    #+#             */
+/*   Updated: 2025/03/01 17:10:01 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	window_init(t_fractol *fractol)
 {
@@ -26,9 +26,15 @@ int	window_init(t_fractol *fractol)
 	if (!fractol->addr)
 		return (destroy(fractol), 1);
 	fractol->zoom = 1;
+	fractol->offset_x = 0;
+	fractol->offset_y = 0;
+	fractol->r = 25;
+	fractol->g = 15;
+	fractol->b = 3;
 	draw_fractol(fractol, fractol->name);
 	mlx_put_image_to_window(fractol->mlx, fractol->win, fractol->img, 0, 0);
 	hooks_handle(fractol);
+	mlx_keys(fractol);
 	close_mlx(fractol);
 	mlx_loop(fractol->mlx);
 	return (0);

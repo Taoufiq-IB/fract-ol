@@ -6,13 +6,13 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 10:13:08 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:16:17 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:19:38 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	iterating_man(double real, double imag)
+static int	iterating_man(double real, double imag)
 {
 	int		i;
 	double	new_real;
@@ -32,7 +32,7 @@ int	iterating_man(double real, double imag)
 	return (i);
 }
 
-int	iterating_julia(double real, double imag, double r, double im)
+static int	iterating_julia(double real, double imag, double r, double im)
 {
 	int		i;
 	double	new_real;
@@ -66,8 +66,8 @@ void	mandelbrot(t_fractol *fractol)
 		x = 0;
 		while (x < WIDTH)
 		{
-			real = scale(x, 1.0, -2.0, WIDTH) * fractol->zoom;
-			imag = scale(y, 1.5, -1.5, HEIGHT) * fractol->zoom;
+			real = scale(x, 2.0, -2.0, WIDTH) * fractol->zoom;
+			imag = scale(y, 2.0, -2.0, HEIGHT) * fractol->zoom;
 			color = coloring(iterating_man(real, imag), 100);
 			put_pixel(fractol, x, y, color);
 			x++;
@@ -90,7 +90,7 @@ void	julia(t_fractol *fractol, double j_x, double j_y)
 		x = 0;
 		while (x < WIDTH)
 		{
-			real = scale(x, -2.0, 2.0, WIDTH) * fractol->zoom;
+			real = scale(x, 2.0, -2.0, WIDTH) * fractol->zoom;
 			imag = scale(y, 2.0, -2.0, HEIGHT) * fractol->zoom;
 			color = coloring(iterating_julia(real, imag, j_x, j_y), 100);
 			put_pixel(fractol, x, y, color);

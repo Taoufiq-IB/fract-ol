@@ -6,7 +6,7 @@
 /*   By: tibarike <tibarike@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:13:46 by tibarike          #+#    #+#             */
-/*   Updated: 2025/02/28 10:47:56 by tibarike         ###   ########.fr       */
+/*   Updated: 2025/03/01 16:55:08 by tibarike         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	coloring(int i, int max, t_fractol *fractol)
 
 	if (i == max)
 		return (0x000000);
-	r = (i * fractol->r + 50) % 256;
-	g = (i * fractol->g + 100) % 256;
-	b = (i * fractol->b + 150) % 256;
+	r = (i * fractol->r) % 256;
+	g = (i * fractol->g) % 256;
+	b = (i * fractol->b) % 256;
 	return (r << 16 | g << 8 | b);
 }
 
